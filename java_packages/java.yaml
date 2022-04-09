@@ -84,13 +84,13 @@
         dest: "{{ tomact_service_path }}"
         owner: "{{ username }}"
         group: "{{ username }}"
-        force: yes
+        state: file
       when: ansible_facts['os_family'] == "Debian"
     - name: service state enable and reload
-      ansible.builtin.systemd :
+      ansible.builtin.systemd:
         name: "{{ tomcat_service }}"
         daemon_reload: yes
         enabled: yes
-        state: started
+        state: restarted
       when: ansible_facts['os_family'] == "Debian"   
       
