@@ -8,7 +8,7 @@
     - shell_bin: /bin/false
     - version: 9.0.62
     - tomcat_lateat: /opt/tomcat/latest
-    - tomcar_
+    
   tasks: 
     - name: update repo and cache  
       ansible.builtin.apt:
