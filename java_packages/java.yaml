@@ -10,7 +10,7 @@
     - tomcat_latest: /opt/tomcat/latest
     - tomcat_latest_sh_path: /opt/tomcat/latest/bin
     - tomcat_service: tomcat.service
-    - tomact_service_path: /etc/systemd/system
+    - tomact_service_path: /etc/systemd/system/tomcat.service
   tasks: 
     - name: update repo and cache  
       ansible.builtin.apt:
