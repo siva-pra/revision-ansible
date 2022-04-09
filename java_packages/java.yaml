@@ -24,7 +24,6 @@
         create_home: yes
         home: "{{ home_dir }}"
         usename: "{{ user_name }}"
-        group: "{{ user_name }}"
         shell: "{{ shell_bin }}" 
       when: ansible_facts['os_family'] == "Debian"
 
