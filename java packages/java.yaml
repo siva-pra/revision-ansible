@@ -1,0 +1,16 @@
+---
+- name: install java
+  hosts: all 
+  become: yes 
+  tasks: 
+    - name: instal java in ubuntu 20.04
+      ansible.builtin.package:
+        name: "{{ java_package }}"
+        update_cache: yes
+        state: present
+      when: ansible_facts['os_family'] == "Debian"  
+    - name: install java in redhat 8
+      ansible.builtin.packege: 
+        name: "{{ java_package }}"
+        state: present
+      when: ansible_facts['os_family'] == "RedHat" 
