@@ -84,7 +84,6 @@
         dest: "{{ tomact_service_dest }}/{{ tomcat_serive }}"
         owner: "{{ username }}"
         group: "{{ username }}"
-        state: present
       when: ansible_facts['os_family'] == "Debian"
     - name: service state enable and reload
       ansible.builtin.systemd :
