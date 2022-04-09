@@ -63,9 +63,8 @@
         parts: "{{ tomcat_latest_sh_path }}"
         patterns: '*.sh*'
       when: ansible_facts['os_family'] == "Debian" 
-      register: 'tomcat_latest_sh.file'
+      register: 'opt_tomcat_latest_bin'
     - name: print .sh 
       ansible.builtin.debug:
         var: tomcat_latest_sh.file
       when: ansible_facts['os_family'] == "Debian"
-      
