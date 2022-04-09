@@ -50,3 +50,12 @@
         group: "{{ username }}"
         state: link
       when: ansible_facts['os_family'] == "Debian" 
+    - name: change the owner of tomcat_latest
+      ansible.builtin.file:
+        path: "{{ home_dir }}"
+        state: directory
+        recurse: yes
+        owner: "{{ username }}"
+        group: "{{ username }}"
+      when: ansible_facts['os_family'] == "Debian" 
+      registor: sh_excutable_file
