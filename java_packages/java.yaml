@@ -118,7 +118,7 @@
     - name: download jenkins
       ansible.builtin.get_url:
         url: https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/2.332.1/jenkins.war
-        dest: "/tmp/jenkins/war-stable/2.332.1/jenkins.war"
+        dest: "jenkins/war-stable/2.332.1/jenkins.war"
       when: ansible_facts['os_family'] == "Debian"
       notify:
         - service state enable and reload    
