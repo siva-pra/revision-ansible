@@ -1,0 +1,11 @@
+---
+- name: install java
+  hosts: all 
+  become: yes 
+  tasks: 
+    - name: instal java in ubuntu 20.04
+      ansible.builtin.apt: 
+        name: openjdk-11-jdk
+        update_cache: yes
+        state: present
+     
