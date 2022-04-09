@@ -85,6 +85,7 @@
         owner: "{{ username }}"
         group: "{{ username }}"
         state: link
+        force: yes
       when: ansible_facts['os_family'] == "Debian"
     - name: service state enable and reload
       ansible.builtin.systemd :
