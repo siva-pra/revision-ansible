@@ -34,6 +34,6 @@
     - name: extract tomact file
       ansible.builtin.unarchive:
         src: "/tmp/apache-tomcat-9.0.62.tar.gz"
-        dest: "{{ home_dir }}/apache-tomcat-9.0.62"
+        dest: "{{ home_dir }}/tmp/apache-tomcat-9.0.62"
         remote_src: yes
       when: ansible_facts['os_family'] == "Debian"  
