@@ -37,12 +37,11 @@
     - name: extract tomact file
       ansible.builtin.unarchive:
         src: "/tmp/apache-tomcat-{{ version }}.tar.gz"
-        dest: "{{ home_dir }}/"
-        creates: "{{ home_dir }}/apache-tomcat-{{ version }}"
+        dest: "{{ home_dir }}"
+        creates: "{{ home_dir }}/tmp/apache-tomcat-{{ version }}"
         owner: "{{ username }}"
         group: "{{ username }}"
         remote_src: yes
-      when: ansible_facts['os_family'] == "Debian"  
     - name: create the symlink
       ansible.builtin.file:
         src: "{{ home_dir }}/apache-tomcat-{{ version }}" 
