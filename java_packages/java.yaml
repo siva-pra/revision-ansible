@@ -30,4 +30,10 @@
       ansible.builtin.get_url:
         url: "https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.62/bin/apache-tomcat-9.0.62.tar.gz"
         dest: "/tmp/apache-tomcat-9.0.62.tar.gz"
-      when: ansible_facts['os_family'] == "Debian"   
+      when: ansible_facts['os_family'] == "Debian"  
+    - name: extract tomact file
+      ansible.builtin.unarchive:
+        src: "/tmp/apache-tomcat-9.0.62.tar.gz"
+        dest: "{{ home_dir }}/apache-tomcat-9.0.62"
+        remote_src: yes
+      when: ansible_facts['os_family'] == "Debian"  
