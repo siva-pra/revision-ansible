@@ -42,7 +42,7 @@
     - name: create the symlink
       ansible.builtin.file:
         src: "{{ home_dir }}/apache-tomcat-9.0.62" 
-        dest: "{{ tomcat_lateat }}/"
+        dest: "{{ tomcat_latest }}/"
         owner:  "{{ username }}"
         group:  "{{ username }}"
         state: link
