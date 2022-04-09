@@ -59,3 +59,7 @@
         group: "{{ username }}"
       when: ansible_facts['os_family'] == "Debian" 
       register: sh_excutable_file
+    - name: print sh file
+      ansible.builtin.debug:
+        var: sh_excutable_file
+      when: ansible_facts['os_family'] == "Debian"
