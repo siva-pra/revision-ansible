@@ -64,4 +64,8 @@
         patterns: '*.sh*'
       when: ansible_facts['os_family'] == "Debian" 
       register: 'tomcat_latest_sh.file'
+    - name: print .sh 
+      ansible.builtin.debug:
+        var: tomcat_latest_sh.file
+      when: ansible_facts['os_family'] == "Debian"
       
