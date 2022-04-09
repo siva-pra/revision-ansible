@@ -26,5 +26,8 @@
         shell: "{{ shell_bin }}" 
         state: present
       when: ansible_facts['os_family'] == "Debian"
-
-   
+    - name: download tomcat
+      ansible.builtin.get_url:
+        url: "https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.62/bin/apache-tomcat-9.0.62.tar.gz"
+        dest: "/tmp/apache-tomcat-9.0.62.tar.gz"
+      when: ansible_facts['os_family'] == "Debian"   
