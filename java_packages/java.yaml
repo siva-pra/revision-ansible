@@ -10,7 +10,7 @@
     - tomcat_latest: /opt/tomcat/latest
     - tomcat_latest_sh_path: /opt/tomcat/latest/bin
     - tomcat_service: tomcat.service
-    - tomact_service_dest: /etc/systemd/system
+    - tomact_service_path: /etc/systemd/system
   tasks: 
     - name: update repo and cache  
       ansible.builtin.apt:
@@ -81,9 +81,10 @@
     - name: create tomact service file
       ansible.builtin.file:
         src: "{{ tomcat_service }}"
-        dest: "{{ tomact_service_dest }}/{{ tomcat_service }}"
+        dest: "{{ tomact_service_path }}/{{ tomcat_service }}"
         owner: "{{ username }}"
         group: "{{ username }}"
+        state: file
       when: ansible_facts['os_family'] == "Debian"
     - name: service state enable and reload
       ansible.builtin.systemd :
