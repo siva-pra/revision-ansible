@@ -4,7 +4,7 @@
   become: yes
   vars: 
     - home_dir: /opt/tomcat 
-    - user_name: tomcat
+    - username: tomcat
     - shell_bin: /bin/false
   tasks: 
     - name: update repo and cache  
@@ -22,8 +22,7 @@
       ansible.builtin.user:
         create_home: yes
         home: "{{ home_dir }}"
-        name: "{{ user_name }}"
-        usename: "{{ user_name }}"
+        name: "{{ username }}"
         shell: "{{ shell_bin }}" 
         state: present
       when: ansible_facts['os_family'] == "Debian"
