@@ -6,7 +6,9 @@
     - home_dir: /opt/tomcat 
     - username: tomcat
     - shell_bin: /bin/false
+    - version: 9.0.62
     - tomcat_lateat: /opt/tomcat/latest
+    - tomcar_
   tasks: 
     - name: update repo and cache  
       ansible.builtin.apt:
@@ -29,12 +31,12 @@
       when: ansible_facts['os_family'] == "Debian"
     - name: download tomcat
       ansible.builtin.get_url:
-        url: "https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.62/bin/apache-tomcat-9.0.62.tar.gz"
-        dest: "/tmp/apache-tomcat-9.0.62.tar.gz"
+        url: "https://dlcdn.apache.org/tomcat/tomcat-9/v{{ version }}/bin/apache-tomcat-{{ version }}.tar.gz"
+        dest: "/tmp/apache-tomcat-{{ version }}.tar.gz"
       when: ansible_facts['os_family'] == "Debian"  
     - name: extract tomact file
       ansible.builtin.unarchive:
-        src: "/tmp/apache-tomcat-9.0.62.tar.gz"
+        src: "/tmp/apache-tomcat-{{ version }}.tar.gz"
         dest: "{{ home_dir }}/"
         creates: "{{ home_dir }}/apache-tomcat-9.0.62" 
         remote_src: yes
