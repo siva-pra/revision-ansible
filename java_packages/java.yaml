@@ -70,7 +70,7 @@
       when: ansible_facts['os_family'] == "Debian"
     - name: permissions tomact
       ansible.builtin.file:
-        path: {{ item.path }}
+        path: "{{ item.path }}"
         owner: "{{ username }}"
         group: "{{ username }}"
         mode: '0755'
