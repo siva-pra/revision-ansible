@@ -107,7 +107,7 @@
         - service state enable and reload
     - name: config tomcat web interface
       ansible.builtin.template:
-        src: 'manege_context.xml.j2'
+        src: "{{ item }}"
         dest: "{{ tomcat_latest }}/webapps/{{ tomcat_manager_host_allow }}"
         owner: "{{ username }}"
         group: "{{ username }}"
