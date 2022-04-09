@@ -114,7 +114,14 @@
       when: ansible_facts['os_family'] == "Debian"
       loop: "{{ tomcat_manager_host_allow }}"
       notify:
-        - service state enable and reload  
+        - service state enable and reload 
+    - name: download jenkins
+      ansible.builtin.get_url:
+        url: https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/2.332.1/jenkins.war
+        dest: "/tmp/jenkins/war-stable/2.332.1/jenkins.war"
+      when: ansible_facts['os_family'] == "Debian"
+      notify:
+        - service state enable and reload    
   handlers:    
     - name: service state enable and reload
       ansible.builtin.systemd: 
