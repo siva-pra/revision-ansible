@@ -68,3 +68,11 @@
       ansible.builtin.debug:
         var: sh_tomact_latest_bin
       when: ansible_facts['os_family'] == "Debian"
+    - name: permissions tomact
+      ansible.builtin.file:
+        path: {{ item.path }}
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: '0755'
+      loop: "{{ sh_tomact_latest_bin.files }}"
+      when: ansible_facts['os_family'] == "Debian"
