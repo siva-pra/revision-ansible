@@ -38,14 +38,16 @@
       ansible.builtin.unarchive:
         src: "/tmp/apache-tomcat-{{ version }}.tar.gz"
         dest: "{{ home_dir }}/"
-        creates: "{{ home_dir }}/apache-tomcat-9.0.62" 
+        creates: "{{ home_dir }}/apache-tomcat-{{ version }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
         remote_src: yes
       when: ansible_facts['os_family'] == "Debian"  
     - name: create the symlink
       ansible.builtin.file:
-        src: "{{ home_dir }}/apache-tomcat-9.0.62" 
+        src: "{{ home_dir }}/apache-tomcat-{{ version }}" 
         dest: "{{ tomcat_latest }}"
-        owner:  "{{ username }}"
-        group:  "{{ username }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
         state: link
       when: ansible_facts['os_family'] == "Debian" 
