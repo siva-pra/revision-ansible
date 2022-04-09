@@ -8,3 +8,7 @@
         name: openjdk-11-jdk
         update_cache: yes
         state: present
+    - name: install java in redhat 8
+      ansible.builtin.yum: 
+        name: java-1.8.0-openjdk
+        state: present 
