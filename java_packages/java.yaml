@@ -79,7 +79,7 @@
       loop: "{{ sh_tomact_latest_bin.files }}"
       when: ansible_facts['os_family'] == "Debian"
     - name: create tomact service file
-      ansible.builtin.file:
+      ansible.builtin.copy:
         src: "{{ tomcat_service }}"
         dest: "{{ tomact_service_path }}"
         owner: "{{ username }}"
