@@ -10,6 +10,12 @@
     - tomcat_latest: /opt/tomcat/latest
     - tomcat_latest_sh_path: /opt/tomcat/latest/bin
     - tomact_service_path: /etc/systemd/system/tomcat.service
+    - tomact_admin_username: devops
+    - tomact_admin_password: devops
+    - tomcat_user_web_interface: conf/tomcat-users.xml
+    - tomcat_manager_host_allow :
+       - /opt/tomcat/latest/webapps/manager/META-INF/context.xml
+       - /opt/tomcat/latest/webapps/host-manager/META-INF/context.xml
   tasks: 
     - name: update repo and cache  
       ansible.builtin.apt:
@@ -90,6 +96,25 @@
       ansible.builtin.service:
         name: 'tomcat.service'
         state: started
+    - name: config tomcat web interface
+      ansible.builtin.template:
+        src: 'tomcat-user.xml.j2'
+        dest: "{{ tomcat_latest }}/{{ tomcat_user_web_interface }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+      when: ansible_facts['os_family'] == "Debian"
+      notify:
+        - service state enable and reload
+    - name: config tomcat web interface
+      ansible.builtin.template:
+        src: 'manege_context.xml.j2'
+        dest: "{{ tomcat_latest }}/webapps/{{ tomcat_manager_host_allow }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+      when: ansible_facts['os_family'] == "Debian"
+      loop: "{{ tomcat_manager_host_allow }}"
+      notify:
+        - service state enable and reload  
   handlers:    
     - name: service state enable and reload
       ansible.builtin.systemd: 
