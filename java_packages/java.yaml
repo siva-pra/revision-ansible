@@ -7,7 +7,7 @@
     - username: tomcat
     - shell_bin: /bin/false
     - version: 9.0.62
-    - tomcat_lateat: /opt/tomcat/latest
+    - tomcat_latest: /opt/tomcat/latest
     
   tasks: 
     - name: update repo and cache  
