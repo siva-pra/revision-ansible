@@ -79,7 +79,7 @@
       when: ansible_facts['os_family'] == "Debian"
     - name: create tomact service file
       ansible.builtin.template:
-        src: "{{ tomcat_service }}"
+        src: 'tomcat.service.j2'
         dest: "{{ tomact_service_path }}"
         owner: "{{ username }}"
         group: "{{ username }}"
@@ -88,12 +88,12 @@
         - service state enable and reload
     - name: tomact service start
       ansible.builtin.service:
-        name: 'tomcat.service.j2'
+        name: 'tomcat.service.
         state: started
   handlers:    
     - name: service state enable and reload
       ansible.builtin.systemd:
-        name: 'tomcat.service.j2'
+        name: 'tomcat.service'
         daemon_reload: yes
         enabled: yes
         state: restarted
