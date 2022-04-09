@@ -11,4 +11,5 @@
     - name: install java in redhat 8
       ansible.builtin.yum: 
         name: java-11-openjdk
+        use_backend: auto
         state: present 
