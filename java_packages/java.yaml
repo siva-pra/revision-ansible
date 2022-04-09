@@ -107,8 +107,8 @@
         - service state enable and reload
     - name: config tomcat web interface
       ansible.builtin.template:
-        src: "{{ item }}"
-        dest: "{{ tomcat_latest }}/webapps/{{ tomcat_manager_host_allow }}"
+        src: 'manege_context.xml.j2'
+        dest: "{{ item }}"
         owner: "{{ username }}"
         group: "{{ username }}"
       when: ansible_facts['os_family'] == "Debian"
