@@ -6,7 +6,7 @@
     - home_dir: /opt/tomcat 
     - username: tomcat
     - shell_bin: /bin/false
-    - version: 9.0.62
+    - version: 9.0.60
     - tomcat_latest: /opt/tomcat/latest
     - tomcat_latest_sh_path: /opt/tomcat/latest/bin
     - tomcat_service: tomcat.service
