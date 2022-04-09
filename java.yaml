@@ -10,5 +10,5 @@
         state: present
     - name: install java in redhat 8
       ansible.builtin.yum: 
-        name: java-1.8.0-openjdk
+        name: java-11-openjdk
         state: present 
