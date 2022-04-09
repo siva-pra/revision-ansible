@@ -93,7 +93,7 @@
         state: started
   handlers:    
     - name: service state enable and reload
-      ansible.builtin.systemd:
+      ansible.builtin.service:
         name: "{{ tomcat_service }}"
         daemon_reload: yes
         enabled: yes
