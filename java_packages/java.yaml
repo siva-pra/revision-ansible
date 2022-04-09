@@ -21,8 +21,8 @@
     - name: tomcat user add
       ansible.builtin.user:
         create_home: yes
-        name: tomcat
         home: "{{ home_dir }}"
+        name: "{{ user_name }}"
         usename: "{{ user_name }}"
         shell: "{{ shell_bin }}" 
         state: present
