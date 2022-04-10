@@ -16,6 +16,7 @@
     - tomcat_manager_host_allow :
        - /opt/tomcat/latest/webapps/manager/META-INF/context.xml
        - /opt/tomcat/latest/webapps/host-manager/META-INF/context.xml
+    - java_home: /usr/lib/jvm/java-11-openjdk-amd64
     - jenkins_name: jenkins.war
     - jenkins_url : https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/2.332.1/jenkins.war
   tasks: 
