@@ -16,6 +16,8 @@
     - tomcat_manager_host_allow :
        - /opt/tomcat/latest/webapps/manager/META-INF/context.xml
        - /opt/tomcat/latest/webapps/host-manager/META-INF/context.xml
+    - jenkins_name: jenkins.war
+    - jenkins_url : https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/2.332.1/jenkins.war
   tasks: 
     - name: update repo and cache  
       ansible.builtin.apt:
@@ -117,8 +119,8 @@
         - service state enable and reload 
     - name: download jenkins
       ansible.builtin.get_url:
-        url: https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/2.332.1/jenkins.war
-        dest: "{{ tomcat_latest }}/webapps/jenkins.war"
+        url: "{{ jenkins_url }}"
+        dest: "{{ tomcat_latest }}/webapps/{{ jenkins_name }}"
       when: ansible_facts['os_family'] == "Debian"
       notify:
         - service state enable and reload    
