@@ -134,5 +134,4 @@
         daemon_reload: yes
         enabled: yes
         state: restarted
-      when: ansible_facts['os_family'] == "Debian"   
       
