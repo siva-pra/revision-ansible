@@ -13,7 +13,7 @@ Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headle
 
 Environment="CATALINA_BASE={{ tomcat_latest }}"
 Environment="CATALINA_HOME={{ tomcat_latest }}"
-Environment="CATALINA_PID={{ tomcat_latest }}"/temp/tomcat.pid"
+Environment="CATALINA_PID={{ tomcat_latest }}/temp/tomcat.pid"
 Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
 
 ExecStart={{ tomcat_latest }}/bin/startup.sh
